@@ -1,6 +1,7 @@
 import pygame
 import random
 import sys
+import math
 
 radius = 0
 mouseX, mouseY = 0, 0
@@ -54,13 +55,17 @@ while True:
             fig = 2
 
     radius = (abs(width/2-mouseX)+abs(height/2-mouseY))/2 + 1
+    S = math.sqrt(2*(radius*radius))
+    T = S - radius
+    offset = math.sqrt((T*T)/2)
+
     if fig == 0:
         pygame.draw.circle(window, pygame.Color(red, green , blue), (mouseX, mouseY), radius, 1)
     elif fig == 1:
-        pygame.draw.rect(window, pygame.Color(red, green , blue), (mouseX-radius/2, mouseY-radius/2, radius, radius), 1)
+        pygame.draw.rect(window, pygame.Color(red, green , blue), (mouseX - radius + offset, mouseY - radius + offset, 2*radius-2*offset, 2*radius-2*offset), 1)
     else:
         pygame.draw.circle(window, pygame.Color(red, green , blue), (mouseX, mouseY), radius, 1)
-        pygame.draw.rect(window, pygame.Color(red, green , blue), (mouseX-radius/2, mouseY-radius/2, radius, radius), 1)
+        pygame.draw.rect(window, pygame.Color(red, green , blue), (mouseX - radius + offset, mouseY - radius + offset, 2*radius-2*offset, 2*radius-2*offset), 1)
         
     pygame.display.update()
     fps.tick(30)
