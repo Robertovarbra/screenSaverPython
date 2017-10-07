@@ -33,27 +33,29 @@ while True:
             pygame.quit()
             sys.exit()
 
+    movX = random.choice([10,20,30,40,50])
     if xFlag == 0 and x<width:
-        x += 10
+        x += movX
     elif x >= width:
         xFlag = 1
-        x -= 10
+        x -= movX
     elif xFlag == 1 and x>0:
-        x -= 10
+        x -= movX
     else:
         xFlag = 0
-        x += 10
+        x += movX
 
+    movY = random.choice([10,20,30,40,50])
     if yFlag == 0 and y<height:
-        y += 30
+        y += movY
     elif y >= height:
         yFlag = 1
-        y -= 30
+        y -= movY
     elif yFlag == 1 and y>0:
-        y -= 30
+        y -= movY
     else:
         yFlag = 0
-        y += 50
+        y += movY
 
     color = int(random.random()*20)
     if color == 0:
@@ -88,7 +90,7 @@ while True:
             green = int(random.random()*255)
             blue = int(random.random()*255)
 
-    fig = int(random.random()*20)
+    fig = int(random.random()*50)
     if fig < 3:
         newFig = fig    
     
